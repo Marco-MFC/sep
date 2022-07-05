@@ -507,7 +507,7 @@ int sep_extract(const sep_image *image, float thresh, int thresh_type,
 	      if (freeinfo.firstpix==freeinfo.lastpix)
 		{
 		  status = PIXSTACK_FULL;
-		  sprintf(errtext,
+		  sprintf_s(errtext,sizeof(errtext),
 			  "The limit of %d active object pixels over the "
 			  "detection threshold was reached. Check that "
 			  "the image is background subtracted and the "

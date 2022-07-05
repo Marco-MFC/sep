@@ -21,7 +21,7 @@ int APER_NAME(const sep_image *im,
   long pos;
   short errisarray, errisstd;
   const BYTE *datat, *errort, *maskt, *segt;
-  converter convert, econvert, mconvert, sconvert;
+  converter convert, econvert=0, mconvert=0, sconvert=0;
   APER_DECL;
 
   /* input checks */

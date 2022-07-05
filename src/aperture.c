@@ -339,7 +339,7 @@ int sep_sum_circann_multi(const sep_image *im,
   long pos;
   short errisarray, errisstd;
   const BYTE *datat, *errort, *maskt, *segt;
-  converter convert, econvert, mconvert, sconvert;
+  converter convert, econvert=0, mconvert=0, sconvert=0;
   double rpix, r_out, r_out2, d, prevbinmargin, nextbinmargin, step, stepdens;
   int j, ismasked;
 
@@ -630,7 +630,7 @@ int sep_kron_radius(const sep_image *im, double x, double y,
   int ismasked;
 
   const BYTE *datat, *maskt, *segt;
-  converter convert, mconvert, sconvert;
+  converter convert, mconvert=0, sconvert=0;
 
   r2 = r*r;
   r1 = v1 = 0.0;
@@ -792,7 +792,7 @@ int sep_windowed(const sep_image *im,
   long pos;
   short errisarray, errisstd;
   const BYTE *datat, *errort, *maskt;
-  converter convert, econvert, mconvert;
+  converter convert, econvert=0, mconvert=0;
   double r2, r_in2, r_out2;
 
   /* input checks */

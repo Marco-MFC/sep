@@ -246,7 +246,7 @@ int get_array_subtractor(int dtype, array_writer *f, int *size)
       *f = NULL;
       *size = 0;
       status = ILLEGAL_DTYPE;
-      sprintf(errtext, "in get_array_subtractor(): %d", dtype);
+      sprintf_s(errtext,sizeof(errtext), "in get_array_subtractor(): %d", dtype);
       put_errdetail(errtext);
     }
   return status;
@@ -264,53 +264,53 @@ void sep_get_errmsg(int status, char *errtext)
   switch (status)
     {
     case RETURN_OK:
-      strcpy(errtext, "OK - no error");
+      strcpy_s(errtext,61, "OK - no error");
       break;
     case MEMORY_ALLOC_ERROR:
-      strcpy(errtext, "memory allocation");
+        strcpy_s(errtext, 61, "memory allocation");
       break;
     case PIXSTACK_FULL:
-      strcpy(errtext, "internal pixel buffer full");
+        strcpy_s(errtext, 61, "internal pixel buffer full");
       break;
     case DEBLEND_OVERFLOW:
-      strcpy(errtext, "object deblending overflow");
+        strcpy_s(errtext, 61, "object deblending overflow");
       break;
     case ILLEGAL_DTYPE:
-      strcpy(errtext, "dtype not recognized/unsupported");
+        strcpy_s(errtext, 61, "dtype not recognized/unsupported");
       break;
     case ILLEGAL_SUBPIX:
-      strcpy(errtext, "subpix value must be nonnegative");
+        strcpy_s(errtext, 61, "subpix value must be nonnegative");
       break;
     case NON_ELLIPSE_PARAMS:
-      strcpy(errtext, "parameters do not describe ellipse");
+        strcpy_s(errtext, 61, "parameters do not describe ellipse");
       break;
     case ILLEGAL_APER_PARAMS:
-      strcpy(errtext, "invalid aperture parameters");
+        strcpy_s(errtext, 61, "invalid aperture parameters");
       break;
     case LINE_NOT_IN_BUF:
-      strcpy(errtext, "array line out of buffer");
+        strcpy_s(errtext, 61, "array line out of buffer");
       break;
    case RELTHRESH_NO_NOISE:
-      strcpy(errtext, "relative threshold but image has noise_type of NONE");
+       strcpy_s(errtext, 61, "relative threshold but image has noise_type of NONE");
       break;
     case UNKNOWN_NOISE_TYPE:
-      strcpy(errtext, "image has unknown noise_type");
+        strcpy_s(errtext, 61, "image has unknown noise_type");
       break;
     default:
-       strcpy(errtext, "unknown error status");
+        strcpy_s(errtext, 61, "unknown error status");
        break;
     }
 }
 
 void sep_get_errdetail(char *errtext)
 {
-  strcpy(errtext, _errdetail_buffer);
+  strcpy_s(errtext, DETAILSIZE, _errdetail_buffer);
   memset(_errdetail_buffer, 0, DETAILSIZE);
 }
 
 void put_errdetail(const char *errtext)
 {
-   strcpy(_errdetail_buffer, errtext);
+   strcpy_s(_errdetail_buffer, DETAILSIZE, errtext);
 
 }
 
